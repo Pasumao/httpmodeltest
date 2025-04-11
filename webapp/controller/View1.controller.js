@@ -1,8 +1,8 @@
 sap.ui.define([
-    "./Custom/Base/BaseController",
-    "./Custom/Unit/FilterBarUnit",
-    "./Custom/Control/Downloader",
-    "./Custom/Model/CustomODataModel"
+    "./ui5-CustomClass/Base/BaseController",
+    "./ui5-CustomClass/Unit/FilterBarUnit",
+    "./ui5-CustomClass/Control/Downloader",
+    "./ui5-CustomClass/Model/CustomODataModel"
 ], function (
     BaseController,
     FilterBarUnit,
