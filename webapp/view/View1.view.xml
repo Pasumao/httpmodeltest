@@ -1,0 +1,340 @@
+<mvc:View xmlns:codeeditor="sap.ui.codeeditor" xmlns:uxap="sap.uxap" 
+    controllerName="com.aspn.tools.ybcpi0040.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc" 
+    displayBlock="true"
+    xmlns:fb="sap.ui.comp.filterbar"
+    xmlns:table="sap.ui.table"
+    xmlns:core="sap.ui.core"
+    xmlns:f="sap.f" 
+    xmlns:data="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+    xmlns="sap.m">
+    <f:FlexibleColumnLayout
+        id="idFlexibleColumnLayout"
+        layout="{fcl>/layout}"
+        >
+        <f:beginColumnPages>
+            <f:DynamicPage >
+                <f:title>
+                    <f:DynamicPageTitle>
+                        <f:heading>
+                            <Title text="Script Collection"></Title>
+                        </f:heading>
+                    </f:DynamicPageTitle>
+                </f:title>
+                <f:header>
+                    <f:DynamicPageHeader>
+                        <fb:FilterBar 
+                            id="idFilterBar"
+                            showClearOnFB="true"
+                            clear="onFilterBarClear"
+                            search="onFilterBarSearch">
+                            <fb:filterGroupItems>
+                                <fb:FilterGroupItem
+                                    name="Search"
+                                    label="Search" 
+                                    groupName="Group1"
+                                    visibleInFilterBar="true">
+                                    <fb:control>
+                                        <SearchField placeholder="Search" liveChange="onSearchFieldLiveChange"/>
+                                    </fb:control>
+                                </fb:FilterGroupItem>
+                                <fb:FilterGroupItem
+                                    name="Id"
+                                    label="Package"
+                                    groupName="Group1"
+                                    visibleInFilterBar="true">
+                                    <fb:control>
+                                        <MultiInput 
+                                            id="idMultiInput"
+                                            showValueHelp="true" 
+                                            valueHelpRequest="onMultiInputValueHelpRequest"
+                                            data:valuehelp='{
+                                                key: "Id",
+                                                title: "Package",
+                                                supportRanges: true,
+                                                select_one: false,
+                                                table: {
+                                                    modelName: "CPI",
+                                                    modelPath: "/IntegrationPackages", 
+                                                    columns: [ 
+                                                        {text: "Package",key: "Id"},
+                                                        {text: "Package Name",key: "Name"}
+                                                    ]
+                                                }
+                                            }'>
+                                        </MultiInput>
+                                    </fb:control>
+                                </fb:FilterGroupItem>
+                                <!-- <fb:FilterGroupItem
+                                    name="Name"
+                                    label="Name"
+                                    groupName="Group1"
+                                    visibleInFilterBar="true">
+                                    <fb:control>
+                                        <MultiInput 
+                                            showValueHelp="true" 
+                                            valueHelpRequest="onMultiInputValueHelpRequest"
+                                            data:valuehelp='{
+                                                key: "Name",
+                                                title: "Name",
+                                                supportRanges: false,
+                                                select_one: false,
+                                                table: {
+                                                    modelName: "valuehelp",
+                                                    modelPath: "/SCDA",
+                                                    columns: [ 
+                                                        {text: "Id",key: "Id"},
+                                                        {text: "Name",key: "Name"},
+                                                        {text: "Description",key: "Description"},
+                                                        {text: "Version",key: "Version"}
+                                                    ]
+                                                }
+                                            }'>
+                                        </MultiInput>
+                                    </fb:control>
+                                </fb:FilterGroupItem>
+                                <fb:FilterGroupItem
+                                    name="Discription"
+                                    label="Discription"
+                                    groupName="Group1"
+                                    visibleInFilterBar="true">
+                                    <fb:control>
+                                        <MultiInput 
+                                            showValueHelp="true" 
+                                            valueHelpRequest="onMultiInputValueHelpRequest"
+                                            data:valuehelp='{
+                                                key: "Discription",
+                                                title: "Discription",
+                                                supportRanges: false,
+                                                select_one: false,
+                                                table: {
+                                                    modelName: "valuehelp",
+                                                    modelPath: "/SCDA",
+                                                    columns: [ 
+                                                        {text: "Id",key: "Id"},
+                                                        {text: "Name",key: "Name"},
+                                                        {text: "Description",key: "Description"},
+                                                        {text: "Version",key: "Version"}
+                                                    ]
+                                                }
+                                            }'>
+                                        </MultiInput>
+                                    </fb:control>
+                                </fb:FilterGroupItem>
+                                <fb:FilterGroupItem
+                                    name="ResourceName"
+                                    label="Resource Name"
+                                    groupName="Group1"
+                                    data:key="Name"
+                                    visibleInFilterBar="true">
+                                    <fb:control>
+                                        <MultiInput 
+                                            showValueHelp="true" 
+                                            valueHelpRequest="onMultiInputValueHelpRequest"
+                                            data:valuehelp='{
+                                                key: "Name",
+                                                title: "Package",
+                                                supportRanges: false,
+                                                select_one: false,
+                                                table: {
+                                                    modelName: "valuehelp",
+                                                    modelPath: "/Resource",
+                                                    columns: [ 
+                                                        {text: "Resource Name",key: "Name"},
+                                                        {text: "Resource Type",key: "ResourceType"},
+                                                        {text: "Resource Size",key: "ResourceSize"},
+                                                        {text: "Resource Size Unit",key: "ResourceSizeUnit"}
+                                                    ]
+                                                }
+                                            }'>
+                                        </MultiInput>
+                                    </fb:control>
+                                </fb:FilterGroupItem> -->
+                                <fb:FilterGroupItem
+                                    name="ResourceType"
+                                    label="Resource Type"
+                                    groupName="Group1"
+                                    visibleInFilterBar="true">
+                                    <fb:control>
+                                        <Select >
+                                            <core:Item text=""/>
+                                            <core:Item key="groovy" text="groovy"/>
+                                            <core:Item key="javascript" text="javascript"/>
+                                        </Select>
+                                    </fb:control>
+                                </fb:FilterGroupItem>
+                            </fb:filterGroupItems>
+                        </fb:FilterBar>
+                    </f:DynamicPageHeader>
+                </f:header>
+                <f:content>
+                    <table:Table
+                        id="idTable"
+                        rowSelectionChange="onTableRowSelectionChange"
+                        rowMode="Auto"
+                        rows="{tableData>/}">
+                        <table:extension>
+                            <OverflowToolbar style="Clear">
+                                <Title text="Flows ({= ${tableData>/}.length ? ${tableData>/}.length : '0' })"/>
+                                <ToolbarSpacer />
+                                <Button text="Download" press="onDownloadButtonPress"/>
+                                <Button text="Save As Version" press="onSaveAsVersionButtonPress"/>
+                                <Button text="Deploy" press="onDeployButtonPress"/>
+                            </OverflowToolbar>
+                        </table:extension>
+                        <table:columns>
+                            <table:Column filterProperty="Id">
+                                <Label text="Package"/>
+                                <table:template>
+                                    <Text text="{tableData>Id}"/>
+                                </table:template>
+                            </table:Column>
+                            <table:Column filterProperty="Name">
+                                <Label text="Package Name"/>
+                                <table:template>
+                                    <Text text="{tableData>Name}"/>
+                                </table:template>
+                            </table:Column>
+                            <table:Column filterProperty="SCDA/Id">
+                                <Label text="Id"/>
+                                <table:template>
+                                    <Text text="{tableData>SCDA/Id}" />
+                                </table:template>
+                            </table:Column>
+                            <table:Column filterProperty="SCDA/Id">
+                                <Label text="Name"/>
+                                <table:template>
+                                    <Text text="{tableData>SCDA/Name}"/>
+                                </table:template>
+                            </table:Column>
+                            <table:Column filterProperty="SCDA/Description">
+                                <Label text="Description"/>
+                                <table:template>
+                                    <Text text="{tableData>SCDA/Description}"/>
+                                </table:template>
+                            </table:Column>
+                            <table:Column filterProperty="SCDA/Version">
+                                <Label text="Version"/>
+                                <table:template>
+                                    <Text text="{tableData>SCDA/Version}"/>
+                                </table:template>
+                            </table:Column>
+                            <table:Column filterProperty="Resource/Name">
+                                <Label text="Resource Name"/>
+                                <table:template>
+                                    <Link text="{tableData>Resource/Name}" press="onNameLinkPress"/>
+                                </table:template>
+                            </table:Column>
+                            <table:Column filterProperty="Resource/ResourceType">
+                                <Label text="Resource Type"/>
+                                <table:template>
+                                    <Text text="{tableData>Resource/ResourceType}"/>
+                                </table:template>
+                            </table:Column>
+                            <table:Column filterProperty="Resource/ResourceSize">
+                                <Label text="Resource Size"/>
+                                <table:template>
+                                    <Text text="{tableData>Resource/ResourceSize}"/>
+                                </table:template>
+                            </table:Column>
+                            <table:Column filterProperty="Resource/ResourceSizeUnit">
+                                <Label text="Resource Size Unit"/>
+                                <table:template>
+                                    <Text text="{tableData>Resource/ResourceSizeUnit}"/>
+                                </table:template>
+                            </table:Column>
+                        </table:columns>
+                    </table:Table>
+                </f:content>
+                <f:footer>
+        
+                </f:footer>
+            </f:DynamicPage>
+        </f:beginColumnPages>
+        <f:midColumnPages>
+            <f:DynamicPage >
+                <f:title>
+					<f:DynamicPageTitle>
+                        <f:heading>
+							<Title text="{DetailData>/Id}" wrapping="true" class="sapUiSmallMarginEnd"/>
+						</f:heading>
+                        <f:actions>
+                            <OverflowToolbarButton 
+                                type="Transparent" 
+                                icon="sap-icon://full-screen" 
+                                press="onOverflowToolbarButtonFullPress"
+                                tooltip="Enter Full Screen Mode" 
+                                visible="{= ${fcl>/layout} === 'TwoColumnsMidExpanded' }"/>
+                            <OverflowToolbarButton 
+                                type="Transparent" 
+                                icon="sap-icon://exit-full-screen" 
+                                press="onOverflowToolbarButtonExitPress"
+                                tooltip="Exit Full Screen Mode" 
+                                visible="{= ${fcl>/layout} !== 'TwoColumnsMidExpanded' }"/>
+                            <OverflowToolbarButton 
+                                type="Transparent" 
+                                icon="sap-icon://decline" 
+                                press="onOverflowToolbarButtonClosePress"
+                                tooltip="Close middle column" />
+                        </f:actions>
+                    </f:DynamicPageTitle>
+                </f:title>
+                <f:header>
+                    <f:DynamicPageHeader>
+                        <HBox class="sapUiMediumMarginBottom" alignItems="Start" justifyContent="SpaceBetween">
+                            <HBox >
+                                <VBox justifyContent="Center" class="sapUiSmallMarginEnd" width="150px">
+                                    <Label text="Description"/>
+                                    <Text text="{DetailData>/SCDA/Description}"/>
+                                </VBox>
+                                <VBox justifyContent="Center" class="sapUiSmallMarginEnd">
+                                    <Label text="Version"/>
+                                    <Text text="{DetailData>/SCDA/Version}"/>
+                                </VBox>
+                            </HBox>
+                            <HBox >
+                                <Button text="Save" press="onSaveButtonPress" type="Emphasized"/>
+                            </HBox>
+                        </HBox>
+                        <HBox >
+                            <Text text="General Information" width="150px" class="sapUiSmallMarginEnd"/>
+                            <Text text="Resources"/>
+                        </HBox>
+                        <HBox class="sapUiTinyMarginTop">
+                            <VBox justifyContent="Center" class="sapUiSmallMarginEnd" width="150px">
+                                <Label text="Resource Name"/>
+                                <Text text="{DetailData>/Resource/Name}"/>
+                            </VBox>
+                            <VBox justifyContent="Center" class="sapUiSmallMarginEnd">
+                                <Label text="Resources Type"/>
+                                <Text text="{DetailData>/Resource/ResourceType}"/>
+                            </VBox>
+                            <VBox justifyContent="Center" class="sapUiSmallMarginEnd">
+                                <Label text="Resources Size"/>
+                                <Text text="{DetailData>/Resource/ResourceSize}"/>
+                            </VBox>
+                            <VBox justifyContent="Center" class="sapUiSmallMarginEnd">
+                                <Label text="Resources Size Unit"/>
+                                <Text text="{DetailData>/Resource/ResourceSizeUnit}"/>
+                            </VBox>
+                        </HBox>
+                    </f:DynamicPageHeader>
+                </f:header>
+                <f:content>
+                    <VBox >
+                        <Toolbar>
+                            <core:Icon src="sap-icon://request" class="sapUiTinyMargin"/>
+                            <Title text="{DetailData>/Resource/Name}"/>
+                        </Toolbar>
+                        <codeeditor:CodeEditor 
+                            id="idCodeCodeEditor"
+                            type="{DetailData>/Resource/ResourceType}"
+                            height="600px"
+                            value="{DetailData>/Code}"/>
+                    </VBox>
+                </f:content>
+            </f:DynamicPage>
+        </f:midColumnPages>
+    </f:FlexibleColumnLayout>
+
+</mvc:View>
