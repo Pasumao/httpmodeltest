@@ -1,0 +1,6 @@
+[submodule "customclass"]
+	path = customclass
+	url = https://github.com/Pasumao/ui5-CustomClass.git
+[submodule "webapp/controller/sub"]
+	path = webapp/controller/sub
+	url = https://github.com/Pasumao/ui5-CustomClass.git
