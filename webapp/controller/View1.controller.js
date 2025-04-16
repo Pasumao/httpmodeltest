@@ -379,6 +379,14 @@ sap.ui.define([
             } else {
                 oBinding.filter([]);
             }
+        },
+
+        onTrueButtonPress(oEvent) {
+            this.setmodel("ui", { condition: false });
+        },
+
+        onFalseButtonPress(oEvent) {
+            this.setmodel("ui", { condition: true });
         }
 
     });

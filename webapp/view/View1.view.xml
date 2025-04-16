@@ -1,4 +1,4 @@
-<mvc:View xmlns:codeeditor="sap.ui.codeeditor" xmlns:uxap="sap.uxap" 
+<mvc:View xmlns:codeeditor="sap.ui.codeeditor"
     controllerName="com.aspn.tools.ybcpi0040.controller.View1"
     xmlns:mvc="sap.ui.core.mvc" 
     displayBlock="true"
@@ -6,6 +6,7 @@
     xmlns:table="sap.ui.table"
     xmlns:core="sap.ui.core"
     xmlns:f="sap.f" 
+    xmlns:my="com.aspn.tools.ybcpi0040.controller.ui5-CustomClass.Control"
     xmlns:data="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
     xmlns="sap.m">
     <f:FlexibleColumnLayout
@@ -13,7 +14,7 @@
         layout="{fcl>/layout}"
         >
         <f:beginColumnPages>
-            <f:DynamicPage >
+            <f:DynamicPage showFooter="true">
                 <f:title>
                     <f:DynamicPageTitle>
                         <f:heading>
@@ -65,91 +66,6 @@
                                         </MultiInput>
                                     </fb:control>
                                 </fb:FilterGroupItem>
-                                <!-- <fb:FilterGroupItem
-                                    name="Name"
-                                    label="Name"
-                                    groupName="Group1"
-                                    visibleInFilterBar="true">
-                                    <fb:control>
-                                        <MultiInput 
-                                            showValueHelp="true" 
-                                            valueHelpRequest="onMultiInputValueHelpRequest"
-                                            data:valuehelp='{
-                                                key: "Name",
-                                                title: "Name",
-                                                supportRanges: false,
-                                                select_one: false,
-                                                table: {
-                                                    modelName: "valuehelp",
-                                                    modelPath: "/SCDA",
-                                                    columns: [ 
-                                                        {text: "Id",key: "Id"},
-                                                        {text: "Name",key: "Name"},
-                                                        {text: "Description",key: "Description"},
-                                                        {text: "Version",key: "Version"}
-                                                    ]
-                                                }
-                                            }'>
-                                        </MultiInput>
-                                    </fb:control>
-                                </fb:FilterGroupItem>
-                                <fb:FilterGroupItem
-                                    name="Discription"
-                                    label="Discription"
-                                    groupName="Group1"
-                                    visibleInFilterBar="true">
-                                    <fb:control>
-                                        <MultiInput 
-                                            showValueHelp="true" 
-                                            valueHelpRequest="onMultiInputValueHelpRequest"
-                                            data:valuehelp='{
-                                                key: "Discription",
-                                                title: "Discription",
-                                                supportRanges: false,
-                                                select_one: false,
-                                                table: {
-                                                    modelName: "valuehelp",
-                                                    modelPath: "/SCDA",
-                                                    columns: [ 
-                                                        {text: "Id",key: "Id"},
-                                                        {text: "Name",key: "Name"},
-                                                        {text: "Description",key: "Description"},
-                                                        {text: "Version",key: "Version"}
-                                                    ]
-                                                }
-                                            }'>
-                                        </MultiInput>
-                                    </fb:control>
-                                </fb:FilterGroupItem>
-                                <fb:FilterGroupItem
-                                    name="ResourceName"
-                                    label="Resource Name"
-                                    groupName="Group1"
-                                    data:key="Name"
-                                    visibleInFilterBar="true">
-                                    <fb:control>
-                                        <MultiInput 
-                                            showValueHelp="true" 
-                                            valueHelpRequest="onMultiInputValueHelpRequest"
-                                            data:valuehelp='{
-                                                key: "Name",
-                                                title: "Package",
-                                                supportRanges: false,
-                                                select_one: false,
-                                                table: {
-                                                    modelName: "valuehelp",
-                                                    modelPath: "/Resource",
-                                                    columns: [ 
-                                                        {text: "Resource Name",key: "Name"},
-                                                        {text: "Resource Type",key: "ResourceType"},
-                                                        {text: "Resource Size",key: "ResourceSize"},
-                                                        {text: "Resource Size Unit",key: "ResourceSizeUnit"}
-                                                    ]
-                                                }
-                                            }'>
-                                        </MultiInput>
-                                    </fb:control>
-                                </fb:FilterGroupItem> -->
                                 <fb:FilterGroupItem
                                     name="ResourceType"
                                     label="Resource Type"
@@ -247,7 +163,17 @@
                     </table:Table>
                 </f:content>
                 <f:footer>
-        
+                    <OverflowToolbar>
+                        <my:if
+                            condition="{ui>/condition}">
+                            <!-- <my:t> -->
+                                <Button text="true" press="onTrueButtonPress"/>
+                            <!-- </my:t>
+                            <my:f> -->
+                                <Button text="false" press="onFalseButtonPress"/>
+                            <!-- </my:f> -->
+                        </my:if>
+                    </OverflowToolbar>
                 </f:footer>
             </f:DynamicPage>
         </f:beginColumnPages>
